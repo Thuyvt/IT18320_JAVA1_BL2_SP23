@@ -5,6 +5,7 @@
  */
 package Day3;
 
+import Day5.SinhVien;
 import java.util.Scanner;
 
 /**
@@ -47,5 +48,9 @@ public class Main {
                 }
             }
         }
+        
+//         // tạo ra đối tượng = từ khóa new
+//        SinhVienPoly thuy = new SinhVienPoly();
+//        thuy.diemTb 
     }
 }
