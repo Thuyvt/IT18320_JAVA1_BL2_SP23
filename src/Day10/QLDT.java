@@ -6,6 +6,8 @@
 package Day10;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.Scanner;
 
 /**
@@ -99,6 +101,7 @@ public class QLDT {
             }
         }
     }
+
     // 6. Xóa những loại thuốc không phải thuốc theo đơn và giá &gt; 100
     public void xoa() {
         if (arr.isEmpty()) {
@@ -113,4 +116,71 @@ public class QLDT {
             xuat();
         }
     }
+
+    // Sửa thông tin đối tượng được chọn
+    public void sua() {
+        System.out.println("Nhập vị trí đối tượng cần sửa:");
+        int index = Integer.parseInt(sc.nextLine());// vị trí đơn thuốc cần sửa
+        DonThuoc dt = new DonThuoc();// giá trị mới
+        System.out.println("Nhập tên:");
+        dt.setTen(sc.nextLine());
+        System.out.println("Nhâp số lượng:");
+        dt.setSoLuong(Integer.parseInt(sc.nextLine()));
+        System.out.println("Nhập loại:");
+        dt.setLoai(sc.nextLine());
+        System.out.println("Nhập giá:");
+        dt.setGia(Double.parseDouble(sc.nextLine()));
+        System.out.println("Nhập hãng:");
+        dt.setHang(sc.nextLine());
+        System.out.println("Nhập mô tả:");
+        dt.setMoTa(sc.nextLine());
+        System.out.println("Nhập theo đơn:");
+        dt.setTheoDon(Boolean.parseBoolean(sc.nextLine()));
+        // thay thế giá trị đối tượng mới vào vị trí đã tồn tại
+        if (index < arr.size()) {
+            // set(): sửa thông tin
+            arr.set(index, dt);
+        }
+    }
+
+    // Sửa giá đơn thuốc >= 40 thành 35
+    public void suaGia() {
+        for (int i = 0; i < arr.size(); i++) {
+            DonThuoc dt = arr.get(i);
+            if (dt.getGia() >= 40) {
+                dt.setGia(35);
+            }
+        }
+    }
+
+    public void sapXepTheoTen() {
+        // C1:
+        Collections.sort(arr, new Comparator<DonThuoc>() {
+            @Override
+            public int compare(DonThuoc o1, DonThuoc o2) {
+                // Sắp xếp theo tên thuốc tăng dần
+                //return o1.getTen().compareTo(o2.getTen());  
+                // sắp xếp giảm dần theo tên
+                //return o2.getTen().compareTo(o1.getTen());
+                // Sắp xếp tăng dần theo giá
+                //return (int) (o1.getGia() - o2.getGia());
+                // Sắp xếp giảm dần theo giá
+                return (int) (o2.getGia() - o1.getGia());
+            }
+        });
+        System.out.println("Hiển thị lại danh sách sau sắp xếp");
+        xuat();
+        // C2: 
+        // Sắp xếp theo tên tăng dần
+        Collections.sort(arr, Comparator.comparing(DonThuoc::getTen));
+        System.out.println("C2: danh sách sau sắp xếp");
+        xuat();
+        // sắp xếp giảm dần
+        Collections.sort(arr, Comparator.comparing(DonThuoc::getTen).reversed());
+        System.out.println("C2: danh sách sau sắp xếp giảm dần");
+        xuat();
+        // C3: dùng lamda
+        arr.sort((t1, t2) -> t1.getTen().compareTo(t2.getTen()));
+    }
+
 }

@@ -38,24 +38,32 @@ public class Main {
                     break;
                 }
                 case 3 -> {
-              
+                    ql.tinhTong();
                     break;
                 }
                 case 4 -> {
-                   
+                    ql.thuocMax();
                     break;
                 }
                 case 5 -> {
-                   
+                    ql.hienThiVien();
                     break;
                 }
                 case 6 -> {
-                   
+                    ql.xoa();
                     break;
-                } 
+                }
+                case 7 -> {
+                    ql.xoa();
+                    break;
+                }
+                case 8 -> {
+                    ql.suaGia();
+                    break;
+                }
                 case 0 -> {
                     System.exit(0);
-                } 
+                }
                 default -> {
                     System.out.println("Nhập sai, yêu cầu nhập lại");
                 }

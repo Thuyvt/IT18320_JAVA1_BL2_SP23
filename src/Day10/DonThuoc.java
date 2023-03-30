@@ -89,7 +89,7 @@ public class DonThuoc {
     
     public void inThongTin() {
         System.out.printf("Tên: %s, số lượng: %d, loại: %s, giá: %.2f, "
-                + "hãng: %s, mô tả: %s, là thuốc theo đơn: %s, tiền: %.2f, đánh giá: %s", 
+                + "hãng: %s, mô tả: %s, là thuốc theo đơn: %s, tiền: %.2f, đánh giá: %s \n", 
                 this.ten, this.soLuong, this.loai, this.gia,
                 this.hang, this.moTa, this.theoDon, tinhTien(), danhGia());
     }
